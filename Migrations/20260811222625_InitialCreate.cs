@@ -11,18 +11,18 @@ namespace PrimerApi.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Productos",
+                name: "Bebidas",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombre = table.Column<string>(type: "TEXT", nullable: false),
                     Precio = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Categoria = table.Column<string>(type: "TEXT", nullable: false)
+                    Descripcion = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Productos", x => x.Id);
+                    table.PrimaryKey("PK_Bebidas", x => x.Id);
                 });
         }
 
@@ -30,7 +30,7 @@ namespace PrimerApi.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Productos");
+                name: "Bebidas");
         }
     }
 }

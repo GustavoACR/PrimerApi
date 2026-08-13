@@ -10,7 +10,7 @@ using PrimerApi;
 namespace PrimerApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260810214151_InitialCreate")]
+    [Migration("20260811222625_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -19,13 +19,13 @@ namespace PrimerApi.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.10");
 
-            modelBuilder.Entity("PrimerApi.Producto", b =>
+            modelBuilder.Entity("PrimerApi.Bebida", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Categoria")
+                    b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -38,7 +38,7 @@ namespace PrimerApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Productos");
+                    b.ToTable("Bebidas");
                 });
 #pragma warning restore 612, 618
         }

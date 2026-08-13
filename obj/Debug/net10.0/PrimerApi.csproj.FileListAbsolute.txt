@@ -29,6 +29,9 @@
 /workspaces/PrimerApi/bin/Debug/net10.0/SQLitePCLRaw.batteries_v2.dll
 /workspaces/PrimerApi/bin/Debug/net10.0/SQLitePCLRaw.core.dll
 /workspaces/PrimerApi/bin/Debug/net10.0/SQLitePCLRaw.provider.e_sqlite3.dll
+/workspaces/PrimerApi/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
+/workspaces/PrimerApi/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/workspaces/PrimerApi/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /workspaces/PrimerApi/bin/Debug/net10.0/System.CodeDom.dll
 /workspaces/PrimerApi/bin/Debug/net10.0/System.Composition.AttributedModel.dll
 /workspaces/PrimerApi/bin/Debug/net10.0/System.Composition.Convention.dll
@@ -147,6 +150,3 @@
 /workspaces/PrimerApi/obj/Debug/net10.0/PrimerApi.pdb
 /workspaces/PrimerApi/obj/Debug/net10.0/PrimerApi.genruntimeconfig.cache
 /workspaces/PrimerApi/obj/Debug/net10.0/ref/PrimerApi.dll
-/workspaces/PrimerApi/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
-/workspaces/PrimerApi/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
-/workspaces/PrimerApi/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
