@@ -37,7 +37,7 @@ public class BebidasController : ControllerBase
     {
         if (id != bebida.Id)
         {
-            return BadRequest("El ID de la URL no coincide con el ID del cuerpo.");
+            return BadRequest(new { message = "El ID de la URL no coincide con el ID del cuerpo." });
         }
 
         _context.Entry(bebida).State = EntityState.Modified;
@@ -50,7 +50,7 @@ public class BebidasController : ControllerBase
         {
             if (!_context.Bebidas.Any(e => e.Id == id))
             {
-                return NotFound($"No se encontró la bebida con ID {id}.");
+                return NotFound(new { message = $"No se encontró la bebida con ID {id}." });
             }
             else
             {
@@ -68,7 +68,7 @@ public class BebidasController : ControllerBase
         var bebida = await _context.Bebidas.FindAsync(id);
         if (bebida == null)
         {
-            return NotFound($"No se encontró la bebida con ID {id}.");
+            return NotFound(new { message = $"No se encontró la bebida con ID {id}." });
         }
 
         _context.Bebidas.Remove(bebida);

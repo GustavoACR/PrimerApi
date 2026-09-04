@@ -10,7 +10,7 @@ using PrimerApi;
 namespace PrimerApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260811222625_InitialCreate")]
+    [Migration("20260901152651_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -39,6 +39,36 @@ namespace PrimerApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Bebidas");
+                });
+
+            modelBuilder.Entity("PrimerApi.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Contraseña")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Numero")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Rol")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

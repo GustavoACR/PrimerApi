@@ -24,6 +24,23 @@ namespace PrimerApi.Migrations
                 {
                     table.PrimaryKey("PK_Bebidas", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombre = table.Column<string>(type: "TEXT", nullable: false),
+                    Numero = table.Column<int>(type: "INTEGER", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Contraseña = table.Column<string>(type: "TEXT", nullable: false),
+                    Rol = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -31,6 +48,9 @@ namespace PrimerApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Bebidas");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
         }
     }
 }
