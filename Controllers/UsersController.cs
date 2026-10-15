@@ -142,8 +142,8 @@ public class UsersController: ControllerBase
         usuarioDb.Rol = usuarioEditado.Rol;
         // u otros campos como Email, etc.
 
-        // 1. Validar si el correo ya existe en la base de datos
-        var existeUsuario = await _context.Usuarios.AnyAsync(u => u.Numero == usuarioEditado.Numero);
+
+        var existeUsuario = await _context.Usuarios.AnyAsync(u => u.Numero == usuarioEditado.Numero && u.Id != id);
         if (existeUsuario)
         {
             return BadRequest(new { message = "El número de teléfono ya está registrado." });
@@ -195,4 +195,43 @@ public class UsersController: ControllerBase
         return Ok(new { message = $"Bebida con ID {id} eliminada correctamente." });
     }
 
+    // API para Autenticación: POST /api/login
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginDto credentials)
+    {
+        // 1. Buscar al usuario por su nombre (ignorando mayúsculas/minúsculas)
+        var usuario = await _context.Usuarios
+            .FirstOrDefaultAsync(u => u.Nombre.ToLower() == credentials.Nombre.ToLower());
+
+        // 2. Si no existe, devolvemos el mensaje exacto que tu frontend valida
+        if (usuario == null)
+        {
+            return BadRequest(new { message = "Este usuario no existe." });
+        }
+
+        // 3. Verificar si la contraseña coincide con el Hash guardado en la base de datos
+        // Nota: Si usas BCrypt, se usa BCrypt.Verify. Si la guardas en texto plano (no recomendado), usas: usuario.Password == credentials.Contraseña
+        bool passwordValido = BCrypt.Net.BCrypt.Verify(credentials.Contraseña, usuario.Contraseña);
+
+        if (!passwordValido)
+        {
+            return BadRequest(new { message = "Usuario o contraseña incorrecto." });
+        }
+
+        // 4. Devolver la respuesta con la estructura exacta que tu hook 'setUser(loginResponse)' espera
+        return Ok(new
+        {
+            id = usuario.Id,
+            nombre = usuario.Nombre,
+            numero = usuario.Numero,
+            rol = usuario.Rol // Asegúrate de tener este campo en tu base de datos (ej. "Admin", "User")
+        });
+    }
+}
+
+// DTO para mapear exactamente el JSON que envía tu frontend
+public class LoginDto
+{
+    public string Nombre { get; set; } = string.Empty;
+    public string Contraseña { get; set; } = string.Empty; // Mapea con la 'ñ' del JSON de React
 }
